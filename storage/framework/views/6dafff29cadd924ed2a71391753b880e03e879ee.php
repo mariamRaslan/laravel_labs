@@ -1,16 +1,18 @@
 <?php $__env->startSection('title'); ?> Create <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
+
+
 <div class="card">
  
   <div class="card-header">
     <h5 class="card-title">Post Info</h5>
   </div>
   <div class="card-body">
-  <h5 class="card-title"><?php echo e($title); ?>:</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  <h5 class="card-title">Title:</h5>
+    <p class="card-text"><?php echo e($post->title); ?>:</p>
     <h5 class="card-title">Description:</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <p class="card-text"><?php echo e($post->description); ?></p>
   </div>
 
 </div>
@@ -21,9 +23,9 @@
     <h5 class="card-title">Post Creator Info</h5>
   </div>
   <div class="card-body">
-  <h5 class="card-title ">Name:-<small class="fw-normal">Ahmed</small></h5>
-    <h5 class="card-title">Email:- <small class="fw-normal">ahmed@gmail.com</small></h5>
-    <h5 class="card-title">Created At:- <small class="fw-normal">thurasday 25th of December 1975 02:15:16 PM</small></h5>
+  <h5 class="card-title ">Name:-<small class="fw-normal"><?php echo e($user->name); ?></small></h5>
+    <h5 class="card-title">Email:- <small class="fw-normal"><?php echo e($user->email); ?></small></h5>
+    <h5 class="card-title">Created At:- <small class="fw-normal"><?php echo e($user->created_at); ?></small></h5>
    
   </div>
 
