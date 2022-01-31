@@ -1,7 +1,8 @@
 <?php $__env->startSection('title'); ?> Create <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('content'); ?>
-        <form method="POST" action="<?php echo e(route('posts.store')); ?>">
+
+     <form method="POST" action="<?php echo e(route('posts.store')); ?>">
             <?php echo csrf_field(); ?>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Title</label>

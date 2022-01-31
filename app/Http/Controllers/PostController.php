@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -29,9 +30,9 @@ class PostController extends Controller
         return redirect()->route('posts.index');
     }
 
-    public function store()
+    public function store(StorePostRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
 
         Post::create([
@@ -62,10 +63,10 @@ class PostController extends Controller
             'post' => $post,'users' => $users
         ]);
     }
-    public function update($id)
-    {    $data = request()->all();
-        // dd('test'); any logic after dd won't be executed
-        //the logic to store post in the db
+    public function update($id,StorePostRequest $request)
+    {   
+        
+        $data = $request->all();
          Post::where('id',$id)
         ->update([
             'title' => $data['title'],
