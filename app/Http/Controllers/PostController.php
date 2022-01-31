@@ -9,7 +9,7 @@ use App\Http\Requests\StorePostRequest;
 class PostController extends Controller
 {
     public function index()
-    { $allPosts = Post::all(); //to retrieve all records
+    { $allPosts = Post::paginate(3); //to retrieve all records
 
         return view('posts.index', [
             'allPosts' => $allPosts

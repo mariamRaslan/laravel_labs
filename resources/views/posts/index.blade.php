@@ -23,14 +23,14 @@
                 <th scope="row">{{ $post->id }}</th>
                 <td>{{ $post->title }}</td>
                 <td>{{ isset($post->user) ? $post->user->name : 'Not Found' }}</td>
-                <td>{{ $post->created_at }}</td>
+                <td>{{ $post->created_at->format("Y-m-d") }}</td>
                 <td>
                     <a href="{{route('posts.show',$post->id)}}" class="btn btn-primary">View</a>
                     <a href="{{route('posts.edit',$post->id)}}" class="btn btn-success">Edite</a>
                     <!-- <a href="{{route('posts.destroy',$post->id)}}" class="btn btn-danger">Delete</a> -->
-                    <form method="POST" action="{{route('posts.destroy',$post->id)}}">
+                    <form method="POST" action="{{route('posts.destroy',$post->id)}}"  style="display:inline">
                                         {{ csrf_field() }} {{ method_field('DELETE') }}
-                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                        <button type="submit" id='delete' class="btn btn-danger">Delete</button>
                                     </form>
                     
                 </td>
@@ -38,15 +38,17 @@
               @endforeach
             </tbody>
           </table>
-<div class="mt-5">
-          <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
-</nav>
+          <div class="d-flex justify-content-center">
+    {!! $allPosts->links() !!}
 </div>
+
+<script>
+            const del=document.getElementById('delete');
+            del.addEventListener('click',function(e){
+                const c=confirm("You Sure Continue Deleted !");
+                if(c == false){
+                   e.preventDefault();
+                }
+            })
+        </script>
 @endsection
